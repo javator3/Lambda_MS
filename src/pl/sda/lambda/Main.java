@@ -1,5 +1,7 @@
 package pl.sda.lambda;
 
+import pl.sda.lambda.AddInterface;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
