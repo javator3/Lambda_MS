@@ -28,20 +28,20 @@ public class Main {
         numbers.forEach(System.out::println);
 
         List<Movie> movies = Arrays.asList(
-                new Movie("Tytul",
+                new Movie("Przygody Pr. Baltazara Gąbki",
                         "Jan",
                         LocalDate.of(2012,02,12),
                         60,
-                        Arrays.asList("Michal", "Maciek")),
-                new Movie("Tytul2",
-                        "Jan",
+                        Arrays.asList("Karol", "Jan")),
+                new Movie("Muminki",
+                        "Kamil",
                         LocalDate.of(2012,02,12),
                         20,
-                        Arrays.asList("Michal", "Maciek")),
-                 new Movie("Tytul3",
+                        Arrays.asList("Jan", "Maciek")),
+                 new Movie("Smerfy",
                         "Jan",
                         LocalDate.of(2012,02,12),
-                        125,
+                        25,
                         Arrays.asList("Michal", "Maciek"))
         );
 
@@ -59,6 +59,7 @@ public class Main {
 
         System.out.println(titles);
 
+        System.out.println(" ----------------------- ");
 
         List<Movie> movieList = movies.stream()
                 .filter(f -> f.getPrice() > 50)
@@ -75,9 +76,27 @@ public class Main {
                 .filter(f -> f.getPrice() < 30)
                 .map(f-> f.getTitle())
                 .collect(Collectors.toList());
-        System.out.println(" _____ ");
+        System.out.println(" ----------------------- ");
        movieList1.forEach(System.out::println);
 
+      //zwroc liste filmow w ktorych gra Jan
+        List<Movie> moviesWithJan = movies.stream()
+                .filter( f-> f.getActorList().contains("Jan"))
+                .collect(Collectors.toList());
+        System.out.println(moviesWithJan.size());
+        moviesWithJan.forEach(p-> System.out.println(p.getTitle() + p.getPrice()));
+
+        System.out.println(" ----------------------- ");
+        //zwroc liste filmow w ktorych gra Jan CAPITAL
+        List<String> moviesUpperCase = movies.stream()
+                .filter( f-> f.getActorList().contains("Jan"))
+                .map(f -> f.getTitle())
+                .map(f -> f.toUpperCase())
+                .collect(Collectors.toList());
+
+        System.out.println(moviesUpperCase.size());
+
+        System.out.println(moviesUpperCase);
 
 
     }
